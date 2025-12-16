@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'pages#top'
+  root 'static_pages#top'
 
   get 'diagnoses/start', to: 'diagnoses#start'
   get 'diagnoses/question/:step', to: 'diagnoses#question', as: 'diagnoses_question'

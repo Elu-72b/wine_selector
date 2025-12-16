@@ -1,61 +1,22 @@
-classDiagnosesController < ApplicationController
-  QUESTIONS = {
-    1 => {
-      text: '好きな色は？',
-      choices: [
-        { id: 'red', label: '赤', next_step: 2 },
-        { id: 'white', label: '白', next_step: 3 }
-      ]
-    },
-    2 => {
-      text: '好きな味わいは？',
-      choices: [
-        { id: 'full', label: 'フルボディ', result: 'カベルネ・ソーヴィニヨン' },
-        { id: 'light', label: 'ライト', result: 'ピノ・ノワール' }
-      ]
-    },
-    3 => {
-      text: '好きな味わいは？',
-      choices: [
-        { id: 'dry', label: '辛口', result: 'シャルドネ' },
-        { id: 'sweet', label: '甘口', result: 'リースリング' }
-      ]
-    }
-    }.freeze
+require_relative "boot"
 
-  def
-    start
-      session[:answers] = []
-      redirect_to diagnoses_question_path(step: 1)
-  end
+require "rails/all"
 
-  def question
-      @step = params[:step].to_i
-      @question = QUESTIONS[@step]
+# Require the gems listed in Gemfile, including any gems
+# you've limited to :test, :development, or :production.
+Bundler.require(*Rails.groups)
 
-      redirect_to diagnoses_result_path unless @question
-  end
+module WineSelector
+  class Application < Rails::Application
+    # Initialize configuration defaults for originally generated Rails version.
+    config.load_defaults 7.0
 
-  def answer
-      step = params[:step].to_i
-      choice_id = params[:choice_id]
-
-      session[:answers] ||= []
-      session[:answers] << choice_id
-
-      question = QUESTIONS[step]
-      choice = question[:choices].find { |c| c[:id] == choice_id }
-
-    if choice[:result]
-        session[:result] = choice[:result]
-        redirect_to diagnoses_result_path
-    else
-        redirect_to diagnoses_question_path(step: choice[:next_step])
-    end
-  end
-
-  def result
-      @result = session[:result]
-      @answers = session[:answers]
+    # Configuration for the application, engines, and railties goes here.
+    #
+    # These settings can be overridden in specific environments using the files
+    # in config/environments/, which are processed later.
+    #
+    # config.time_zone = "Central Time (US & Canada)"
+    # config.eager_load_paths << Rails.root.join("extras")
   end
 end
