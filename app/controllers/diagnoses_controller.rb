@@ -1,10 +1,11 @@
 class DiagnosesController < ApplicationController
   QUESTIONS = {
     1 => {
-      text: '好きな色は？',
+      text: '好きなワインのタイプは？',
       choices: [
         { id: 'red', label: '赤', next_step: 2 },
-        { id: 'white', label: '白', next_step: 3 }
+        { id: 'white', label: '白', next_step: 3 },
+        { id: 'sparkling', label: 'スパークリング', next_step: 4 }
       ]
     },
     2 => {
@@ -20,11 +21,20 @@ class DiagnosesController < ApplicationController
         { id: 'dry', label: '辛口', result: 'シャルドネ' },
         { id: 'sweet', label: '甘口', result: 'リースリング' }
       ]
+    },
+    4 => {
+      text: 'どんなシーンで楽しみたいですか？',
+      choices: [
+        { id: 'cheers', label: '乾杯に', result: 'プロセッコ' },
+        { id: 'dessert', label: 'デザートに', result: 'モスカート・ダスティ' }
+      ]
     }
+
   }.freeze
 
   def start
     session[:answers] = []
+    session[:result] = nil
     redirect_to diagnoses_question_path(step: 1)
   end
 
@@ -37,7 +47,7 @@ class DiagnosesController < ApplicationController
 
   def answer
     step = params[:step].to_i
-    choice_id = params[:choice_id]
+    choice_id = params[:choice]
 
     session[:answers] ||= []
     session[:answers] << choice_id
@@ -57,4 +67,5 @@ class DiagnosesController < ApplicationController
     @result = session[:result]
     @answers = session[:answers]
   end
+
 end

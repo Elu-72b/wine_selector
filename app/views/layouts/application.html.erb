@@ -5,11 +5,39 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <!-- カスタムカラーの設定 -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'wine': {
+                50: '#fdf2f4',
+                100: '#fce7eb',
+                200: '#f9d0d9',
+                300: '#f4a8b8',
+                400: '#ec7591',
+                500: '#e0486f',
+                600: '#cc2b5c',
+                700: '#ab1f4d',
+                800: '#8e1d46',
+                900: '#781c41',  // 深いワインレッド
+                950: '#470b21',  // より深いワインレッド
+              }
+            }
+          }
+        }
+      }
+    </script>
   </head>
 
   <body>
-    <%= yield %>
+    <main class="container mx-auto mt-28 px-5 flex">
+      <%= yield %>
+    </main>
   </body>
 </html>

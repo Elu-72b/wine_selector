@@ -1,14 +1,53 @@
-<div class="container mx-auto px-4 py-8">
-  <h1 class="text-3xl font-bold text-center mb-8">診断結果</h1>
-  
-  <div class="max-w-md mx-auto text-center">
-    <div class="mb-8">
-      <p class="text-gray-600 mb-2">あなたにおすすめのワインは...</p>
-      <h2 class="text-4xl font-bold text-red-600 mb-4"><%= @result %></h2>
+<div class="bg-gradient-to-br from-wine-950 via-wine-900 to-wine-800 flex items-center justify-center p-4 w-full">
+  <div class="bg-wine800 rounded-2xl shadow-2xl p-8 md:p-12 w-full">
+
+    <!-- 結果表示エリア -->
+    <div class="bg-wine-800 border-2 border-wine-900 rounded-xl p-6 md:p-8 mb-8">
+          <div class="text-center mb-6">
+            <span class="text-7xl">🍷</span>
+          </div>
+              <!-- タイトル -->
+          <h1 class="text-3xl md:text-4xl font-bold text-center text-wine-000 mb-8">
+            診断結果
+          </h1>
+      <p class="text-wine-000 text-lg mb-3 text-center">
+        あなたにおすすめのワインは...
+      </p>
+      <h2 class="text-3xl md:text-5xl font-bold text-wine-000 text-center mb-4">
+        <%= @result %>
+      </h2>
+
+      <% share_url  = request.original_url %>
+
+    <%= link_to "診断結果をXで共有",
+    "https://twitter.com/intent/tweet?text=ワイン診断結果：#{@result}&
+    あなたにぴったりのワインを見つけよう！&url=#{CGI.escape(share_url)}",
+    target: "_blank",
+    rel: "noopener",
+    class: "block bg-wine-800 text-white text-center border border-wine-800 px-6 py-3 rounded-xl font-semibold hover:bg-gray-800 transition " %>
+
+      <!-- 装飾的な区切り線 -->
+      <div class="flex justify-center space-x-2 mt-6">
+        <span class="text-wine-000">◆</span>
+        <span class="text-wine-000">◆</span>
+        <span class="text-wine-000">◆</span>
+      </div>
     </div>
-    
+
+    <!-- ボタンエリア -->
     <div class="space-y-4">
-      <%= link_to 'もう一度診断する', diagnoses_start_path, class: 'inline-block bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition' %>
+      <%= link_to root_path,
+                  class: 'block bg-wine-800 text-white text-lg font-semibold px-8 py-4 rounded-xl hover:bg-wine-800 transition transform hover:scale-105 shadow-lg text-center' do %>
+        <span class="flex items-center justify-center">
+          <span class="mr-2">←</span>
+          <span>もう一度診断する</span>
+        </span>
+      <% end %>
+    </div>
+
+    <!-- 装飾 -->
+    <div class="mt-8 text-center">
+      <span class="text-5xl">🍇</span>
     </div>
   </div>
 </div>
