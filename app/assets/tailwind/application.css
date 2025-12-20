@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+.bg-wine-900 {
+background-color: #4c0519;
+}
+
+.bg-wine-800 {
+background-color: #881337;
+}
+
+.bg-wine-700 {
+background-color: #f43f5e;
+}
+
+.bg-wine-600 {
+background-color: #fb7185;
+}
+
+.bg-wine-100 {
+background-color: #ffe4e6;
+}
+
+.border-wine-900 {
+border-color: #4c0519;
+}
+
+.border-wine-800 {
+border-color: #c03d64;
+}
+
+.border-wine-100 {
+border-color: #ffe1e0;
+}
+
+.text-wine-800 {
+color: #881337;
+}
+
+.text-wine-900 {
+color: #4c0519;
+}
+
+.text-wine-000 {
+color: #ffffff;
+}
+
+.text-wine-600 {
+color: #9b3e52;
+}
+
+.from-wine-950 {
+background-color: #2c0a13;
+}
+
+.via-wine-900 {
+background-color: #3f0f1a;
+}
+
+.bg-primary {
+    background-color: var(--color-primary);
+    color: #ffffff;
+}
+
+.text-primary {
+    color: var(--color-primary);
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+}
