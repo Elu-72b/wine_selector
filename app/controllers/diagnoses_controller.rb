@@ -11,15 +11,15 @@ class DiagnosesController < ApplicationController
     2 => {
       text: '好きな味わいは？',
       choices: [
-        { id: 'full', label: 'フルボディ', result: 'カベルネ・ソーヴィニヨン' },
+        { id: 'full', label: 'フルボディ', result: 'シラー' },
         { id: 'light', label: 'ライト', result: 'ピノ・ノワール' }
       ]
     },
     3 => {
       text: '好きな味わいは？',
       choices: [
-        { id: 'dry', label: '辛口', result: 'シャルドネ' },
-        { id: 'sweet', label: '甘口', result: 'リースリング' }
+        { id: 'dry', label: '辛口', result: 'ソーヴィニヨン・ブラン' },
+        { id: 'sweet', label: '甘口', result: 'ゲヴュルツトラミネール' }
       ]
     },
     4 => {
