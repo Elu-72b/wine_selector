@@ -18,22 +18,16 @@
       </h2>
       <p class="text-wine-000 text-center mb-6">
         <%= @description %>
+          <br><br><strong>おすすめのペアリング:</strong> <%= @pairing %>
       </p>
       <h3 class="text-lg md:text-xl font-semibold text-wine-000 mb-3 text-center">
-        or
+        or <%= @another_result %>
       </h3>
-      <h2 class="text-3xl md:text-5xl font-bold text-wine-000 text-center mb-4">
-        <%= @result2 %>
-      </h2>
-      <p class="text-wine-000 text-center mb-6">
-        <%= @description2 %>
-      </p>
 
-      <% share_url  = request.original_url %>
+      <% share_url = request.original_url %>
 
     <%= link_to "診断結果をXで共有",
-    "https://twitter.com/intent/tweet?text=ワイン診断結果：#{@result}& #{@result2}！
-    あなたにぴったりのワインを見つけよう！& #WineSelecter &url=#{CGI.escape(share_url)}",
+    "https://twitter.com/intent/tweet?text=ワイン診断結果：#{@result}%0Aおすすめのペアリング：#{@pairing}%0Aあなたにぴったりのワインを見つけよう！&url=#{CGI.escape(share_url)}%0A&hashtags=ワイン診断,WineSelector",
     target: "_blank",
     rel: "noopener",
     class: "block bg-wine-800 text-white text-center border border-wine-800 px-6 py-3 rounded-xl font-semibold hover:bg-gray-800 transition " %>
