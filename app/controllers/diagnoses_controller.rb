@@ -32,11 +32,11 @@ class DiagnosesController < ApplicationController
       ]
     },
     5 => {
-      text: '渋みについてどう思いますか？',
+      text: 'どのワインの気分？',
       choices: [
-        { id: 'light', label: '軽めの渋み', next_step: 13 },
-        { id: 'medium', label: '中程度の渋み', next_step: 14 },
-        { id: 'strong', label: '強い渋み', next_step: 15 }
+        { id: 'light', label: '白ワイン', next_step: 13 },
+        { id: 'medium', label: '赤ワイン', next_step: 14 },
+        { id: 'strong', label: 'スパークリングワイン', next_step: 15 }
       ]
     },
     6 => {
@@ -73,23 +73,23 @@ class DiagnosesController < ApplicationController
         ]
     },
     9 => {
-        text: 'どんなチョコレートスイーツに合わせる？',
+        text: 'どんなチョコレートに合わせる？',
         choices: [
-          { id: 'dark_chocolate', label: 'ダークチョコレート', result: 'ポートワイン', pairing: 'ダークチョコレート、チョコレートケーキ、ブラウニー',
-            description: '濃厚な甘みのデザートワインがおすすめです。',
-            another_result:'シラー' },
-          { id: 'milk_chocolate', label: 'ミルクチョコレート', result: 'マルベック', pairing: 'ミルクチョコレート、チョコレートムース、チョコレートフォンデュ',
-            description: 'フルーティーで柔らかな赤ワインがおすすめです。',
-            another_result:'メルロー' }
+          { id: 'dark_chocolate', label: 'ビターチョコレート', result: 'ポートワイン', pairing: 'ダークチョコレート、熟成チーズ、ナッツ',
+            description: '濃厚な味わいの赤ワインがおすすめです。',
+            another_result:'カベルネ・ソーヴィニヨン' },
+          { id: 'milk_chocolate', label: 'ミルクチョコレート', result: 'メルロー', pairing: 'ミルクチョコレート、ベリー系デザート、ナッツ',
+            description: '柔らかな味わいの赤ワインがおすすめです。',
+            another_result:'ピノ・ノワール' }
         ]
     },
     10 => {
-        text: 'どんな果物スイーツに合わせる？',
+        text: 'どんな果物に合わせる？',
         choices: [
-          { id: 'berry_dessert', label: 'ベリー系デザート', result: 'モスカート・ダスティ', pairing: 'ベリータルト、フルーツサラダ、パンナコッタ',
-            description: '甘酸っぱいデザートには甘口のスパークリングワインがおすすめです。',
+          { id: 'berry_dessert', label: 'ベリー系', result: 'モスカート・ダスティ', pairing: 'ベリータルト、フルーツサラダ、パンナコッタ',
+            description: '甘酸っぱいデザートには甘口のスパークリングワインがおすすめです.',
             another_result:'リースリング' },
-          { id: 'citrus_dessert', label: '柑橘系デザート', result: 'ヴィオニエ', pairing: 'レモンタルト、オレンジケーキ、シトラスサラダ',
+          { id: 'citrus_dessert', label: '柑橘系', result: 'ヴィオニエ', pairing: 'レモンタルト、オレンジケーキ、シトラスサラダ',
             description: 'フルーティーで芳醇な白ワインがおすすめです。',
             another_result:'ゲヴュルツトラミネール' }
         ]
@@ -97,56 +97,62 @@ class DiagnosesController < ApplicationController
     11 => {
         text: 'どんなナッツ類に合わせる？',
         choices: [
-          { id: 'almonds', label: 'アーモンド', result: 'シェリー', pairing: 'アーモンド、ヘーゼルナッツ、カシューナッツ',
-            description: 'ナッツの風味を引き立てるフォーティファイドワインがおすすめです。',
-            another_result:'ヴィオニエ' },
-          { id: 'mixed_nuts', label: 'ミックスナッツ', result: 'シャルドネ', pairing: 'ミックスナッツ、ピスタチオ、マカダミアナッツ',
-            description: 'クリーミーな味わいの白ワインがおすすめです。',
-            another_result:'リースリング' }
+          { id: 'almonds', label: 'アーモンド', result: 'フランスのシャンパーニュ', pairing: 'アーモンド、カシューナッツ、軽いチーズ',
+            description: 'ナッツの風味を引き立てるスパークリングワインがおすすめです。',
+            another_result:'イタリアのプロセッコ' },
+          { id: 'walnuts', label: 'くるみ', result: '樽熟成のシャルドネ', pairing: 'くるみ、ブルーチーズ、ドライフルーツ',
+            description: 'くるみのコクには深みのある白ワインがおすすめです。',
+            another_result:'ヴィオニエ' }
         ]
     },
     12 => {
         text: 'どんなチーズ類に合わせる？',
         choices: [
-          { id: 'hard_cheese', label: 'ハードチーズ', result: 'カベルネ・ソーヴィニヨン', pairing: 'チェダー、パルミジャーノ、グラナパダーノ',
+          { id: 'soft_cheese', label: 'カマンベール、ブリーなどのソフトチーズ', result: 'シャルドネ', pairing: 'カマンベール、ブリー、クリームチーズ',
+            description: 'クリーミーなチーズには樽熟成の白ワインがおすすめです。',
+            another_result:'ソーヴィニヨン・ブラン' },
+          { id: 'hard_cheese', label: 'チェダー、パルミジャーノなどのハードチーズ', result: 'カベルネ・ソーヴィニヨン', pairing: 'チェダー、パルミジャーノ、グラナ・パダーノ',
             description: 'しっかりとした味わいの赤ワインがおすすめです。',
-            another_result:'シラー' },
-          { id: 'soft_cheese', label: 'ソフトチーズ', result: 'ピノ・ノワール', pairing: 'ブリー、カマンベール、フレッシュチーズ',
-            description: '軽やかな味わいの赤ワインがおすすめです。',
-            another_result:'メルロー' }
-        ]
-    },
-    13 => {
-        text: 'どんな軽めの渋みが好き？',
-        choices: [
-          { id: 'fruity', label: 'フルーティー', result: 'ピノ・ノワール', pairing: '鶏肉、豚肉、軽めのパスタ',
-            description: '軽やかでフルーティーな赤ワインがおすすめです。',
-            another_result:'メルロー' },
-          { id: 'earthy', label: 'アーシー', result: 'グルナッシュ', pairing: 'グリル野菜、ラムチョップ、トマトソースパスタ',
-            description: '土っぽい風味の赤ワインがおすすめです。',
             another_result:'シラー' }
         ]
     },
-    14 => {
-        text: 'どんな中程度の渋みが好き？',
+    13 => {
+        text: 'どんな白ワインが好き？',
         choices: [
-          { id: 'balanced', label: 'バランスの取れた味わい', result: 'メルロー', pairing: 'ローストビーフ、ミートソースパスタ、チーズ',
-            description: 'バランスの取れた味わいの赤ワインがおすすめです。',
+          { id: 'fruity', label: 'さっぱりフルーティー', result: 'ニュージーランド産のソーヴィニヨン・ブラン', pairing: 'シーフード、サラダ、寿司',
+            description: 'ハーブや柑橘系、青りんごの香りが豊かな白ワインです。',
+            another_result:'スペインのアルバリーニョ' },
+          { id: 'light_sweet', label: 'すっきり甘口', result: 'ドイツのリースリング', pairing: 'アジア料理、フルーツ',
+            description: '白桃、青りんごのフルーティーな甘さと程よい酸で飲み疲れない白ワインです。',
+            another_result:'イタリアのモスカート' },
+          { id: 'rich_sweet', label: 'デザート感覚で飲める甘口', result: 'ドイツのアイスワイン', pairing: 'デザート、チーズ、フルーツ',
+            description: '濃厚な甘味が特徴の白ワインです。',
+            another_result:'ドイツのトロッケン・ベーレン・アウスレーゼ' }
+        ]
+    },
+    14 => {
+        text: 'どんな赤ワインが好き？',
+        choices: [
+          { id: 'light_red', label: '飲み疲れない軽さ', result: 'ピノ・ノワール', pairing: '鶏肉料理、豚肉料理、マイルドなチーズ',
+            description: 'チェリーやラズベリーのフルーティーな香りと柔らかなタンニンが特徴の赤ワインです。',
             another_result:'ピノ・ノワール' },
-          { id: 'spicy', label: 'スパイシー', result: 'シラー', pairing: 'バーベキュー、スパイシーカレー、グリルドラム',
-            description: 'スパイシーな風味の赤ワインがおすすめです。',
-            another_result:'グルナッシュ' }
+          { id: 'full_body', label: '濃厚な果実味', result: 'イタリア プーリア州のプリミティーボ、アメリカのジンファンデル', pairing: '熟成チーズ、チョコレート、赤身肉料理',
+            description: 'ジャムのような濃厚な果実味が特徴の赤ワインです。',
+            another_result:'フランス ラングドック・ルーションのフルボディ赤' }
         ]
     },
     15 => {
-        text: 'どんな強い渋みが好き？',
+        text: 'どんなスパークリングワインに惹かれますか？',
         choices: [
-          { id: 'full_body', label: 'フルボディ', result: 'カベルネ・ソーヴィニヨン', pairing: 'ステーキ、ローストラム、濃厚なシチュー',
-            description: '力強い味わいの赤ワインがおすすめです。',
-            another_result:'マルベック' },
-          { id: 'tannic', label: 'タンニン豊富', result: 'マルベック', pairing: 'グリルドビーフ、スパイシー料理、熟成チーズ',
-            description: 'タンニン豊富な赤ワインがおすすめです。',
-            another_result:'カベルネ・ソーヴィニヨン' }
+          { id: 'fruity', label: 'すっきりしてフルーティな味わい', result: 'イタリアのプロセッコ', pairing: 'アペリティフ、軽い前菜、寿司',
+            description: '爽やかな酸味とフルーティーな香りが特徴のスパークリングワインです。',
+            another_result:'スペインのカヴァ、イタリアのフランチャコルタ' },
+          { id: 'yeast', label: 'パンやナッツのような香り', result: 'フランスのシャンパーニュ', pairing: 'お祝いの席、シーフード、クリーミーな料理',
+            description: '複雑で深みのある味わいが特徴のスパークリングワインです。',
+            another_result:'スペインのカヴァ・レセルバ' },
+          { id: 'sweet', label: 'デザート感覚で飲める甘口', result: 'イタリアのアスティ・スプマンテ', pairing: 'デザート、フルーツ、軽いおつまみ',
+            description: '甘くてフルーティーな味わいが特徴のスパークリングワインです。',
+            another_result:'イタリアのモスカート・ダスティ' }
         ]
     }
   }.freeze
