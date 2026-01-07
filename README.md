@@ -1,39 +1,41 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-- Ruby version
-
-- System dependencies
-
-- Configuration
-
-- Database creation
-
-- Database initialization
-
-- How to run the test suite
-
-- Services (job queues, cache servers, search engines, etc.)
-
-- Deployment instructions
-
-- ...
-
 # Wine Selector
 
+## 概要
 好みに合ったワインを診断できるアプリケーション
 
-## 使用技術- Ruby 3.x
+## 機能
+- 簡単な質問に答えることで、その回答に合わせたワインの種類や品種とおすすめの料理やスイーツとのペアリングを表示
+- ログイン不要で簡単に診断可能
+- 診断結果をXで共有
 
-- Rails 7.x
+## 使用技術
+- Ruby 3.3.6
+- Rails 7.0.10
+- Tailwind CSS
 
 ## 機能- ワイン診断機能
 
 - 質問形式での好み分析
 - おすすめワインの提示
 
-## セットアップ
+## 使い方
+1. 「診断を始める」ボタンをクリック
+2. 三つの質問に答える
+3. 「診断結果」ワインの品種 or 種類とおすすめのペアリング、２番目のおすすめワインを表示
+4. 診断結果をXで共有もできる
+
+## 開発背景
+前職でお客様からおすすめのワインの問い合わせ対応をしていた経験から、
+ワイン初心者が店頭でワインを選ぶきっかけになるようなアプリを開発しました
+
+## 工夫した点
+- session を使って複数画面にまたがる回答内容を保持しました
+
+## 今後の拡張予定
+- レスポンシブ対応
+- 各ワインのイメージ画像挿入
+- フレーバーのイメージ画像挿入
+- ワインの感想投稿機能
+- 質問・回答をデータベースで管理する
