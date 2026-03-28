@@ -23,6 +23,7 @@ class DiagnosesController < ApplicationController
 
     if choice[:result]
       session[:result] = choice[:result]
+      session[:image] = choice[:image]
       session[:description] = choice[:description]
       session[:another_result] = choice[:another_result]
       session[:pairing] = choice[:pairing]
@@ -36,6 +37,7 @@ class DiagnosesController < ApplicationController
     redirect_to root_path and return unless session[:result]
 
     @result = session[:result]
+    @image = session[:image]
     @description = session[:description]
     @another_result = session[:another_result]
     @pairing = session[:pairing]
