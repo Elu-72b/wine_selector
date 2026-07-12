@@ -9,16 +9,19 @@
     </div>
 
     <!-- 選択肢 -->
-    <div class="space-y-4">
+    <div class="space-y-4" data-controller="answer-animation">
       <% @question[:choices].each do |choice| %>
         <%= form_with url: diagnoses_answer_path(step: params[:step]),
                       method: :post,
-                      local: true do %>
+                      local: true,
+                      data: { answer_animation_target: 'form',
+                              action: 'submit->answer-animation#submit' } do %>
 
           <%= hidden_field_tag :choice, choice[:id] %>
 
-          <%= submit_tag choice[:label],
-                class: 'w-full text-center text-wine-000 border-2 border-wine-800 font-semibold text-lg p-5 rounded-xl hover:bg-wine-900 transition ' %>
+          <%= button_tag choice[:label],
+                type: :submit,
+                class: 'answer-btn w-full text-center text-wine-000 border-2 border-wine-800 font-semibold text-lg p-5 rounded-xl hover:bg-wine-900 transition ' %>
         <% end %>
       <% end %>
     </div>

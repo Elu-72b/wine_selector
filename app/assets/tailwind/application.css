@@ -71,3 +71,63 @@ background-color: #3f0f1a;
     padding: 0.75rem 1.25rem;
     border-radius: 0.5rem;
 }
+
+/* ボタン演出: 選択フィードバック+送信演出 */
+.answer-btn {
+  transition: transform .15s ease, box-shadow .15s ease;
+  cursor: pointer;
+}
+.answer-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, .35);
+}
+.answer-btn:active {
+  transform: scale(.97);
+}
+
+@keyframes answer-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.07); }
+  70% { transform: scale(.98); }
+  100% { transform: scale(1.03); }
+}
+.answer-selected {
+  animation: answer-pop .45s ease forwards;
+  background-color: #c03d64;
+  border-color: #ffffff;
+  position: relative;
+}
+/* 送信中スピナー */
+.answer-selected::after {
+  content: "";
+  position: absolute;
+  right: 1.25rem;
+  top: 50%;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: -.55rem;
+  border: 2px solid rgba(255, 255, 255, .4);
+  border-top-color: #ffffff;
+  border-radius: 9999px;
+  animation: answer-spin .7s linear infinite;
+}
+@keyframes answer-spin {
+  to { transform: rotate(360deg); }
+}
+
+.answer-dimmed {
+  opacity: .25;
+  transform: scale(.98);
+  pointer-events: none;
+  transition: opacity .35s ease, transform .35s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .answer-btn,
+  .answer-selected,
+  .answer-selected::after,
+  .answer-dimmed {
+    animation: none;
+    transition: none;
+  }
+}
